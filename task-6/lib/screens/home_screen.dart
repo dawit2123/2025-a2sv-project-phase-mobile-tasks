@@ -153,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'July 13, 2023',
+                      'Nov 29, 2025',
                       style: AppTextStyles.caption.copyWith(
                         color: Colors.grey.shade500,
                       ),
