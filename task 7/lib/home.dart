@@ -23,14 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
       name: 'Samsung Galaxy S23',
       description:
           'The Samsung Galaxy S23 is a smartphone with a 6.1-inch Dynamic AMOLED 2X display, powered by the Snapdragon 8 Gen 2 Mobile Platform for Galaxy. It features a versatile camera system with a 50MP main wide lens, an 8GB RAM, and storage options up to 512GB. Other features include a 3,900 mAh battery, IP68 water resistance, and a durable design with Gorilla Glass Victus 2.',
-      price: 699.00,
+      price: 1299.00,
     ),
     Product(
       id: '3',
       name: 'iPhone 15',
       description:
           'The iPhone 15 is a 6.1-inch smartphone featuring an A16 Bionic chip, a USB-C port, and a Super Retina XDR display with Dynamic Island. It has a 48MP main camera with a 2x telephoto zoom, a durable design with color-infused matte back glass, and is rated IP68 for water and dust resistance. It runs on iOS 17 and uses Face ID for security. ',
-      price: 999.99,
+      price: 1099.99,
     ),
   ];
 
