@@ -16,6 +16,16 @@ class ProductRepositoryImpl implements ProductRepository {
     required this.localDataSource,
   });
 
+  ProductModel _toModel(Product product) {
+    return ProductModel(
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      imageUrl: product.imageUrl,
+    );
+  }
+
   @override
   Future<Either<Failure, Product>> getProduct(String id) async {
     try {
@@ -34,13 +44,7 @@ class ProductRepositoryImpl implements ProductRepository {
   @override
   Future<Either<Failure, void>> insertProduct(Product product) async {
     try {
-      final productModel = ProductModel(
-        id: product.id,
-        name: product.name,
-        description: product.description,
-        price: product.price,
-        imageUrl: product.imageUrl,
-      );
+      final productModel = _toModel(product);
       await remoteDataSource.insertProduct(productModel);
       await localDataSource.insertProduct(productModel);
       return const Right(null);
@@ -52,13 +56,7 @@ class ProductRepositoryImpl implements ProductRepository {
   @override
   Future<Either<Failure, void>> updateProduct(Product product) async {
     try {
-      final productModel = ProductModel(
-        id: product.id,
-        name: product.name,
-        description: product.description,
-        price: product.price,
-        imageUrl: product.imageUrl,
-      );
+      final productModel = _toModel(product);
       await remoteDataSource.updateProduct(productModel);
       await localDataSource.updateProduct(productModel);
       return const Right(null);
