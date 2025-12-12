@@ -51,42 +51,42 @@ class ProductRepositoryImpl implements ProductRepository {
 
   @override
   Future<Either<Failure, void>> insertProduct(Product product) async {
-    final productModel = _toModel(product);
-    if (await networkInfo.isConnected) {
-      try {
+    return await _performNetworkOperation(
+      () async {
+        final productModel = _toModel(product);
         await remoteDataSource.insertProduct(productModel);
         await localDataSource.insertProduct(productModel);
-        return const Right(null);
-      } catch (e) {
-        return Left(ServerFailure());
-      }
-    } else {
-      return Left(NetworkFailure());
-    }
+      },
+    );
   }
 
   @override
   Future<Either<Failure, void>> updateProduct(Product product) async {
-    final productModel = _toModel(product);
-    if (await networkInfo.isConnected) {
-      try {
+    return await _performNetworkOperation(
+      () async {
+        final productModel = _toModel(product);
         await remoteDataSource.updateProduct(productModel);
         await localDataSource.updateProduct(productModel);
-        return const Right(null);
-      } catch (e) {
-        return Left(ServerFailure());
-      }
-    } else {
-      return Left(NetworkFailure());
-    }
+      },
+    );
   }
 
   @override
   Future<Either<Failure, void>> deleteProduct(String id) async {
-    if (await networkInfo.isConnected) {
-      try {
+    return await _performNetworkOperation(
+      () async {
         await remoteDataSource.deleteProduct(id);
         await localDataSource.deleteProduct(id);
+      },
+    );
+  }
+
+  Future<Either<Failure, void>> _performNetworkOperation(
+    Future<void> Function() operation,
+  ) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await operation();
         return const Right(null);
       } catch (e) {
         return Left(ServerFailure());
