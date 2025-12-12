@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/error/failures.dart';
 import '../../domain/usecases/delete_product.dart';
 import '../../domain/usecases/get_product.dart';
 import '../../domain/usecases/insert_product.dart';

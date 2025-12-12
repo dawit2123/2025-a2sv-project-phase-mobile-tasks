@@ -4,7 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:task7/features/product/data/datasources/product_local_data_source_impl.dart';
+import 'package:task7/features/product/data/datasources/product_local_data_source_impl.dart'
+    show ProductLocalDataSourceImpl, cachedProductsKey;
 import 'package:task7/features/product/data/models/product_model.dart';
 
 @GenerateMocks([SharedPreferences])
